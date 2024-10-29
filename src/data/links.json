@@ -1,0 +1,84 @@
+[
+    {
+        "title": "Home",
+        "slug": "/"
+    },
+    {
+        "title": "Über uns",
+        "slug": "/ueber-uns",
+        "subLinks" : [
+            {
+                "title": "Historie",
+                "slug": "/ueber-uns/historie"
+            },
+            {
+                "title": "Ansprechpartner",
+                "slug": "/ueber-uns/historie/ansprechpartner"
+            },
+            {
+                "title": "Zertifikate",
+                "slug": "/ueber-uns/zertifikate"
+            },
+            {
+                "title": "Jobs",
+                "slug": "/ueber-uns/jobs"
+            }
+        ]
+    },
+    {
+        "title": "Leistungen",
+        "slug": "/leistungen"
+    },
+    {
+        "title": "Biofilter",
+        "slug": "/biofilter"
+    },
+    {
+        "title": "Einsatzgebiete",
+        "slug": "/einsatzgebiete",
+        "subLinks" : [
+            {
+                "title": "Industrie",
+                "slug": "/einsatzgebiete/industrie"
+            },
+            {
+                "title": "Landwirtschaft",
+                "slug": "/einsatzgebiete/landwirtschaft"
+            },
+            {
+                "title": "Lebensmittelindustrie",
+                "slug": "/einsatzgebiete/lebensmittelindustrie"
+            },
+            {
+                "title": "Klärschlämme & Recycling",
+                "slug": "/einsatzgebiete/klaerschlaemme-recycling"
+            }
+        ]
+    },
+    {
+        "title": "Referenzen",
+        "slug": "/referenzen"
+    },
+    {
+        "title": "Service",
+        "slug": "/service",
+        "subLinks" : [
+            {
+                "title": "Fördermittel",
+                "slug": "/service/foerdermittel"
+            },
+            {
+                "title": "Orientierende Messungen",
+                "slug": "/service/orientierende-messungen"
+            },
+            {
+                "title": "Downloads",
+                "slug": "/service/downloads"
+            }
+        ]
+    },
+    {
+        "title": "Kontakt",
+        "slug": "/kontakt"
+    }
+]
