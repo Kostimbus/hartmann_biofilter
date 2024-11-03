@@ -1,0 +1,76 @@
+//Fonts
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../../static/fonts/Roboto/Roboto-Regular.ttf) format('ttf');
+  }
+
+
+// Variables
+$custom-blue: #06498f;
+
+
+header {
+    position: relative;
+    height: 100vh;
+    background-image: url('../images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+
+    #desktop-nav {
+        #kkk {
+        height: 13vh;
+            .navbar-logo {
+                background-color: white;
+                height: 100%;
+                padding: 1% 1%;
+                position: relative;
+                z-index: 5;
+        
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    right: 0;
+                    transform: skewX(-20deg);
+                    content: '';
+                    background: white;
+                    pointer-events: none;
+                    transform-origin: bottom right;
+                    width: 13%;
+                }
+            }
+        
+            #desktop-navbar-list {
+                padding-right: 2rem;
+                margin-right: -12px;
+                height: 100%;
+                background-color: $custom-blue;
+                position: relative;
+                font-family: Roboto;
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    left: 0;
+                    transform: skewX(-20deg);
+                    content: '';
+                    //background: $custom-blue;
+                    background: red;
+                    pointer-events: none;
+                    transform-origin: bottom right;
+                    //width: 3.5rem;
+                    width: 13%;
+                }
+            }
+        }
+        
+
+
+    }
+    
+}

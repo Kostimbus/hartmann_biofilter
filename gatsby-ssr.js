@@ -7,6 +7,27 @@
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes }) => {
-  setHtmlAttributes({ lang: `en` })
-}
+
+import React from "react";
+
+export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
+  setHtmlAttributes({ lang: `en` });
+  setHeadComponents([
+    <link
+      key="roboto"
+      rel="preload"
+      href="/fonts/Roboto-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="roboto-medium"
+      rel="preload"
+      href="/fonts/Roboto-Medium.ttf"
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />,
+  ]);
+};
