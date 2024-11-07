@@ -1,84 +1,103 @@
 [
     {
-        "title": "Home",
+        "de_title": "Startseite",
+        "en_title": "Homepage",
         "slug": "/"
     },
     {
-        "title": "Über uns",
-        "slug": "/ueber-uns",
-        "subLinks" : [
+        "de_title": "Über uns",
+        "en_title": "About Us",
+        "slug": "/about",
+        "subLinks": [
             {
-                "title": "Historie",
-                "slug": "/ueber-uns/historie"
+                "de_title": "Historie",
+                "en_title": "History",
+                "slug": "/about-us/history"
             },
             {
-                "title": "Ansprechpartner",
-                "slug": "/ueber-uns/historie/ansprechpartner"
+                "de_title": "Ansprechpartner",
+                "en_title": "Contacts",
+                "slug": "/about-us/contacts"
             },
             {
-                "title": "Zertifikate",
-                "slug": "/ueber-uns/zertifikate"
+                "de_title": "Zertifikate",
+                "en_title": "Certificates",
+                "slug": "/about-us/certificates"
             },
             {
-                "title": "Jobs",
-                "slug": "/ueber-uns/jobs"
+                "de_title": "Jobs",
+                "en_title": "Jobs",
+                "slug": "/about-us/jobs"
             }
         ]
     },
     {
-        "title": "Leistungen",
-        "slug": "/leistungen"
+        "de_title": "Leistungen",
+        "en_title": "Services",
+        "slug": "/services"
     },
     {
-        "title": "Biofilter",
+        "de_title": "Biofilter",
+        "en_title": "Biofilter",
         "slug": "/biofilter"
     },
     {
-        "title": "Einsatzgebiete",
-        "slug": "/einsatzgebiete",
-        "subLinks" : [
+        "de_title": "Einsatzgebiete",
+        "en_title": "Areas of application",
+        "slug": "/areas-of-application",
+        "subLinks": [
             {
-                "title": "Industrie",
-                "slug": "/einsatzgebiete/industrie"
+                "de_title": "Industrie",
+                "en_title": "Industry",
+                "slug": "/areas-of-application/industry"
             },
             {
-                "title": "Landwirtschaft",
-                "slug": "/einsatzgebiete/landwirtschaft"
+                "de_title": "Landwirtschaft",
+                "en_title": "Agriculture",
+                "slug": "/areas-of-application/agriculture"
             },
             {
-                "title": "Lebensmittelindustrie",
-                "slug": "/einsatzgebiete/lebensmittelindustrie"
+                "de_title": "Lebensmittelindustrie",
+                "en_title": "Food Industry",
+                "slug": "/areas-of-application/food-industry"
             },
             {
-                "title": "Klärschlämme & Recycling",
-                "slug": "/einsatzgebiete/klaerschlaemme-recycling"
+                "de_title": "Klärschlämme & Recycling",
+                "en_title": "Sewage Sludge & Recycling",
+                "slug": "/areas-of-application/sewage-sludges-and-recycling"
             }
         ]
     },
     {
-        "title": "Referenzen",
-        "slug": "/referenzen"
+        "de_title": "Referenzen",
+        "en_title": "References",
+        "slug": "/references"
     },
     {
-        "title": "Service",
+        "de_title": "Service",
+        "en_title": "Service",
         "slug": "/service",
-        "subLinks" : [
+        "subLinks": [
             {
-                "title": "Fördermittel",
-                "slug": "/service/foerdermittel"
+                "de_title": "Fördermittel",
+                "en_title": "subsidies",
+                "slug": "/service/subsidies"
             },
             {
-                "title": "Orientierende Messungen",
-                "slug": "/service/orientierende-messungen"
+                "de_title": "Orientierende Messungen",
+                "en_title": "Preliminary Measurements",
+                "slug": "/service/indicative-measurements"
             },
             {
-                "title": "Downloads",
+                "de_title": "Downloads",
+                "en_title": "Downloads",
                 "slug": "/service/downloads"
             }
         ]
     },
     {
-        "title": "Kontakt",
-        "slug": "/kontakt"
+        "de_title": "Kontakt",
+        "en_title": "Contact us",
+        "slug": "/contact"
     }
 ]

@@ -1,4 +1,44 @@
 //Fonts
+
+@font-face {
+    font-family: 'IBMPlexSans';
+    font-style: italic;
+    font-display: swap;
+    font-weight: 600;
+    src: url("../../public/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBoldItalic.ttf");
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 200;
+    src: url('../../public/fonts/Manrope/Manrope-ExtraLight.ttf');
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url('../../public/fonts/Manrope/Manrope-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'ClashGrotesk';
+    font-style: normal;
+    font-display: swap;
+    src: url('../../public/fonts/ClashGrotesk/ClashGrotesk-Variable.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/Roboto/Roboto-Light.ttf) format('ttf');
+}
+
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -7,6 +47,30 @@
     src: url(../../static/fonts/Roboto/Roboto-Regular.ttf) format('ttf');
   }
 
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(/fonts/Roboto/Roboto-Medium.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(/fonts/Roboto/Roboto-Black.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'ClashGrotesk';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(/fonts/ClashGrotesk/ClashGrotesk-Light.ttf) format('ttf');
+}
+
 
 // Variables
 $custom-blue: #06498f;
@@ -14,16 +78,52 @@ $custom-blue: #06498f;
 
 header {
     position: relative;
-    height: 100vh;
-    background-image: url('../images/header.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-
+    z-index: 100;
     #desktop-nav {
         #kkk {
-        height: 13vh;
+            height: 13vh;
+            font-family: Manrope;
+            font-weight: 200;
+
+            #desktop-navbar-lang-selector {
+                height: 100%;
+                z-index: 3;
+                padding-right: 0;
+
+                a {
+                    color: white;
+                    z-index: 3;
+                    padding-right: 1rem;
+                }
+
+                #lang {
+                    flex: 0 0 60%;
+                    background-color: $custom-blue;
+                    position: relative;
+                    z-index: 3;
+                    padding-left: 10%;
+
+                    &::before {
+                        position: absolute;
+                        top: 0;
+                        height: 100%;
+                        left: 0;
+                        transform: skewX(-20deg);
+                        margin-left: -50%;
+                        content: '';
+                        background: $custom-blue;
+                        pointer-events: none;
+                        transform-origin: bottom right;
+                        width: 70%;
+                        z-index: 0;
+                    }
+                }
+
+                #qq {
+                    height: 40%;
+                }
+            }
+
             .navbar-logo {
                 background-color: white;
                 height: 100%;
@@ -42,16 +142,22 @@ header {
                     pointer-events: none;
                     transform-origin: bottom right;
                     width: 13%;
+                    z-index: 0;
                 }
             }
         
-            #desktop-navbar-list {
-                padding-right: 2rem;
-                margin-right: -12px;
+            #desktop-main-nav {
+                margin-right: 2rem;
+                margin-left: 4.5%;
                 height: 100%;
                 background-color: $custom-blue;
                 position: relative;
-                font-family: Roboto;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                font-size: 1.1rem;
+                z-index: 3;
+
                 &:before {
                     position: absolute;
                     top: 0;
@@ -59,18 +165,95 @@ header {
                     left: 0;
                     transform: skewX(-20deg);
                     content: '';
-                    //background: $custom-blue;
-                    background: red;
+                    background: linear-gradient(to bottom, $custom-blue 60%, white 40%);
                     pointer-events: none;
                     transform-origin: bottom right;
-                    //width: 3.5rem;
-                    width: 13%;
+                    width: 7%;
+                    margin-left: -6.5%;
+                    z-index: 0;
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    right: 0;
+                    transform: skewX(-20deg);
+                    content: '';
+                    background: linear-gradient(to bottom, $custom-blue 60%, white 40%);
+                    pointer-events: none;
+                    transform-origin: bottom right;
+                    width: 7%;
+                    margin-left: -6.5%;
+                    z-index: 0;
+                }
+
+                #desktop-navbar-list {
+                    flex: 0 0 60%;
+                    padding-left: 2%;
+                    z-index: 3;
+
+                    > ul > li > a {
+                        color: white;
+                    }
+
+                    a.active {
+                        font-family: Manrope;
+                        font-weight: 500;
+                        text-decoration: underline;
+                    }
+
+                    a.lang_de {
+                        padding-left: 25px;
+                    }
+                }
+
+                #desktop-navbar-info {
+                    height: 40%;
+                    //flex: 0 0 20%;
+                    background-color: white;
+
+                    > ul > li > p {
+                        color: black;
+                    }
                 }
             }
         }
-        
-
-
     }
     
+}
+
+.herosection-wrapper {
+    z-index: 1;
+    height: 100vh;
+    width: 100%;
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 10%, rgba(0, 0, 0, 1) 100%),
+    url('../images/header.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+}
+
+// .test {
+//     position: relative;
+//     z-index: 5;
+// }
+
+.over-herosection-wrapper {
+    position: relative;
+    z-index: 10;
+    padding-top: 550px;
+    padding-left: 5%;
+
+    #main-claim {
+        font-family: IBMPlexSans;
+        font-weight: 600;
+        font-style: italic;
+        font-size: 3rem;
+        color: white;
+    }
 }

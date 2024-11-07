@@ -65,13 +65,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-intl`,
       options: {
-        // Directory with the strings JSON
         path: `${__dirname}/src/intl`,
-        // Supported languages
         languages: [`de`, `en`],
-        // Default site language
         defaultLanguage: `de`,
-        // Redirects to `/pt` in the route `/`
         redirect: false,
       },
     },
