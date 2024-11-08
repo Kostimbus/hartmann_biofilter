@@ -30,21 +30,21 @@ const Header = () => {
       <header class="position-relative z-3 header">
         <nav id="desktop-nav" class="navbar navbar-expand-lg navbar-light sticky-top pt-3">
           <div class="container-fluid align-middle" id="kkk">
-            <div class="navbar-logo col-md-3 d-flex flex-wrap align-items-center">
-              <a class="navbar-brand" href="/" title="Hartmann Biofilter GmbH & Co.KG">
-                <span if="logo" class="inline-block">
-                  <StaticImage
-                    src="../images/branding.jpg"
-                    alt="Hartmann Biofilter GmbH & Co.KG - Logo"
-                    width={400}
+            <div class="navbar-logo d-flex flex-wrap flex-row align-items-center justify-content-center">
+              <a class="navbar-brand px-4" href="/" title="Hartmann Biofilter GmbH & Co.KG">
+                <StaticImage
+                      src="../images/branding.jpg"
+                      alt="Photovoltaik Analge gebaut von Turn Key Solar GmbH"
+                      placeholder="blurred"
+                      layout="constrained"
+                      width={350}
+                      quality={90}
+                      imgStyle={{ 'object-position': 'right center' }}
+                      objectFit="contain"
                   />
-                </span>
               </a>
             </div>
-            <div class="col-md-3">
-              <p></p>
-            </div>
-            <div class="collapse navbar-collapse col-md-6" id="desktop-navbar-list">
+            <div class="collapse navbar-collapse col-md-4 ms-4" id="desktop-navbar-list">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
                 {data.allLinksJson.edges.map(({ node }, index) => (
                   <>
@@ -81,6 +81,7 @@ const Header = () => {
                 ))}
               </ul>
             </div>
+            <div className="col-md-4"></div>
           </div>
         </nav>
       </header>

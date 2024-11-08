@@ -39,14 +39,14 @@ module.exports = {
         path: `./src/data/`,
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "content",
-        path: "./src/content/",
-      },
-      __key: "content",
-    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "content",
+    //     path: "./src/content/",
+    //   },
+    //   __key: "content",
+    // },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-mdx`,
