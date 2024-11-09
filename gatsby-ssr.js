@@ -56,7 +56,23 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     <link
       key="manrope"
       rel="preload"
+      href="/fonts/Manrope/Manrope-Light.ttf"
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="manrope"
+      rel="preload"
       href="/fonts/Manrope/Manrope-SemiBold.ttf"
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="manrope"
+      rel="preload"
+      href="/fonts/Manrope/Manrope-Medium.ttf"
       as="font"
       type="font/ttf"
       crossOrigin="anonymous"
@@ -65,6 +81,14 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       key="ibm-plex-sans"
       rel="preload"
       href="/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBoldItalic.ttf"
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="ibm-plex-sans"
+      rel="preload"
+      href="/fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf"
       as="font"
       type="font/ttf"
       crossOrigin="anonymous"

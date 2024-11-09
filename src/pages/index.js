@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { useIntl } from "gatsby-plugin-intl";
+import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -76,14 +77,54 @@ const IndexPage = () => {
   return (
     <Layout>
       <div class="herosection-wrapper"></div>
-      <div class="over-herosection-wrapper">
-        <div class="col-md-6 claim">
-          <p id="main-claim">
-            {intl.locale === "de"
-              ? "Innovative Lösungen für eine saubere Umwelt"
-              : "Innovative solutions for a clean environment"}
+      <div class="over-herosection-wrapper col-md-5">
+        <div class="d-flex claims align-items-center">
+          <p class="col-md-12" id="main-claim">
+            <FormattedMessage id="slogan" defaultMessage={"Innovative Lösungen"} />
           </p>
-          <p>POSHEL NAXUI SUKA EBANAYUA</p>
+          <p class="col-md-12" id="sub-claim">
+            <FormattedMessage
+              id="second_slogan"
+              defaultMessage={"Der einzige Biofilter, der hält, was er verspricht!"}
+            />
+          </p>
+        </div>
+      </div>
+      <div class="d-flex container-fluid branches" id="branches-container">
+        <div class="container-fluid branches-row">
+          <h2>Überall verwenden</h2>
+          <div class="flex-row">
+            <div class="container-fluid d-flex flex-row">
+              <div class="col-md-3">
+                <StaticImage
+                  src="../images/branding.jpg"
+                  alt="Hartmann Biofilter GmbH & Co.KG - Logo"
+                  width={200}
+                />
+              </div>
+              <div class="col-md-3">
+                <StaticImage
+                  src="../images/branding.jpg"
+                  alt="Hartmann Biofilter GmbH & Co.KG - Logo"
+                  width={200}
+                />
+              </div>
+              <div class="col-md-3">
+                <StaticImage
+                  src="../images/branding.jpg"
+                  alt="Hartmann Biofilter GmbH & Co.KG - Logo"
+                  width={200}
+                />
+              </div>
+              <div class="col-md-3">
+                <StaticImage
+                  src="../images/branding.jpg"
+                  alt="Hartmann Biofilter GmbH & Co.KG - Logo"
+                  width={200}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

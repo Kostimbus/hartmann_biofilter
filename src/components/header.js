@@ -3,15 +3,18 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { useIntl } from "gatsby-plugin-intl";
+import { FormattedMessage } from "react-intl";
 import "../styles/global.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
+import { faClock, faEnvelope, faAddressCard, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const intl = useIntl();
   const locale = intl.locale !== "de" ? `/${intl.locale}` : "de";
   const locale_title_prefix = locale.charAt(0) == "/" ? locale.slice(1) : locale;
+
+  const [selectedSubLinks, setSelectedSubLinks] = React.useState([]);
 
   const currentUrl = typeof window !== "undefined" ? window.location.pathname : "";
 
@@ -46,56 +49,97 @@ const Header = () => {
                   <StaticImage
                     src="../images/branding.jpg"
                     alt="Hartmann Biofilter GmbH & Co.KG - Logo"
-                    width={300}
+                    width={350}
                   />
                 </span>
               </a>
             </div>
             <div class="collapse navbar-collapse col-md-6 d-flex flex-column" id="desktop-main-nav">
-              <div class="flex-grow-1 d-flex align-items-center" id="desktop-navbar-list">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
+              <div
+                class="flex-grow-1 d-flex align-items-center container-fluid"
+                id="desktop-navbar-list"
+              >
+                <ul class="navbar-nav mb-lg-0 d-flex justify-content-around w-100">
                   {data.allLinksJson.edges.map(({ node }, index) => (
                     <>
-                      {node.subLinks ? (
-                        <li class="nav-item dropdown">
-                          <Link
-                            className="nav-link dropdown-toggle"
-                            to="#"
-                            id="navbarDropdown"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            {node[`${locale_title_prefix}_title`]}
-                          </Link>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {node.subLinks.map((subLink, subIndex) => (
-                              <li key={subIndex}>
-                                <Link className="dropdown-item" to={subLink.slug}>
-                                  {subLink[`${locale_title_prefix}_title`]}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      ) : (
-                        <li class="nav-item">
-                          <Link className="nav-link" to={node.slug}>
-                            {node[`${locale_title_prefix}_title`]}
-                          </Link>
-                        </li>
-                      )}
+                      <React.Fragment key={index}>
+                        {node.subLinks ? (
+                          <li class="nav-item dropdown">
+                            <Link
+                              className="nav-link dropdown-toggle"
+                              to="#"
+                              id="navbarDropdown"
+                              role="button"
+                              onClick={() => setSelectedSubLinks(node.subLinks)}
+                              aria-expanded="false"
+                            >
+                              {node[`${locale_title_prefix}_title`]}
+                            </Link>
+                          </li>
+                        ) : (
+                          <li class="nav-item">
+                            <Link className="nav-link" to={node.slug}>
+                              {node[`${locale_title_prefix}_title`]}
+                            </Link>
+                          </li>
+                        )}
+                      </React.Fragment>
                     </>
                   ))}
                 </ul>
               </div>
-              <div class="container d-flex align-items-center" id="desktop-navbar-info">
-                <ul class="d-flex flex-row-reverse">
-                  <li>
-                    <p>
-                      <FontAwesomeIcon icon={faClock} /> Montag - Freitag: 08:00 - 17:00
-                    </p>
-                  </li>
+              <div class="container-fluid d-flex" id="desktop-navbar-info">
+                <ul class="d-flex flex-row align-items-center justify-content-start w-100">
+                  {selectedSubLinks.length > 0 ? (
+                    <>
+                      {selectedSubLinks.map((subLink, subIndex) => (
+                        <li key={subIndex}>
+                          <Link className="dropdown-item" to={subLink.slug}>
+                            {subLink[`${locale_title_prefix}_title`]}
+                          </Link>
+                        </li>
+                      ))}
+                      <li>
+                        <button
+                          onClick={() => setSelectedSubLinks([])}
+                          className="btn btn-link ms-2"
+                          aria-label="Close submenu"
+                        >
+                          <FontAwesomeIcon icon={faTimes} />
+                        </button>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <p>
+                          <span>
+                            <FontAwesomeIcon icon={faClock} />
+                          </span>
+                          <FormattedMessage
+                            id="working_hours"
+                            defaultMessage={"Montag - Freitag: 08:00 - 17:00"}
+                          />
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <span>
+                            <FontAwesomeIcon icon={faEnvelope} />
+                          </span>
+                          <Link to="mailto: info@hartmann-filter.de">info@hartmann-filter.de</Link>
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <span>
+                            <FontAwesomeIcon icon={faAddressCard} />
+                          </span>
+                          +49 (0) 5295 1569
+                        </p>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
@@ -108,26 +152,16 @@ const Header = () => {
                 id="lang"
               >
                 <Link
-                  className="nav-link lang_de"
-                  to="/"
-                  getProps={({ isCurrent }) =>
-                    isCurrent ? { className: "nav-link active" } : null
-                  }
-                >
-                  DE
-                </Link>
-
-                {/* <Link
                   className="nav-link"
-                  to="/en"
+                  to={locale_title_prefix == "de" ? "/en" : "/"}
                   getProps={({ isCurrent }) =>
                     isCurrent ? { className: "nav-link active" } : null
                   }
                 >
-                  EN
-                </Link> */}
+                  {locale_title_prefix == "de" ? "EN" : "DE"}
+                </Link>
               </div>
-              <div class="container d-flex align-items-center" id="qq"></div>
+              <div class="container d-flex align-items-center" id="utility_lang_div"></div>
             </div>
           </div>
         </nav>
