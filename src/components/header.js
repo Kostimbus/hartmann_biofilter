@@ -15,6 +15,20 @@ const Header = () => {
   const locale_title_prefix = locale.charAt(0) == "/" ? locale.slice(1) : locale;
 
   const [selectedSubLinks, setSelectedSubLinks] = React.useState([]);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const currentUrl = typeof window !== "undefined" ? window.location.pathname : "";
 
@@ -41,7 +55,10 @@ const Header = () => {
   return (
     <>
       <header class="z-3 header sticky-top">
-        <nav id="desktop-nav" class="navbar navbar-expand-lg navbar-light pt-3">
+        <nav
+          id="desktop-nav"
+          class={`navbar navbar-expand-lg navbar-light pt-3 ${scrolled ? "scrolled" : ""}`}
+        >
           <div class="container-fluid align-middle" id="kkk">
             <div class="navbar-logo col-md-3 d-flex flex-wrap align-items-center justify-content-center">
               <a class="navbar-brand" href="/" title="Hartmann Biofilter GmbH & Co.KG">
@@ -49,12 +66,17 @@ const Header = () => {
                   <StaticImage
                     src="../images/branding.jpg"
                     alt="Hartmann Biofilter GmbH & Co.KG - Logo"
-                    width={350}
+                    width={400}
                   />
                 </span>
               </a>
             </div>
-            <div class="collapse navbar-collapse col-md-6 d-flex flex-column" id="desktop-main-nav">
+            <div
+              class={`collapse navbar-collapse ${
+                scrolled ? "col-md-7" : "col-md-6"
+              } d-flex flex-column`}
+              id="desktop-main-nav"
+            >
               <div
                 class="flex-grow-1 d-flex align-items-center container-fluid"
                 id="desktop-navbar-list"
@@ -67,10 +89,13 @@ const Header = () => {
                           <li class="nav-item dropdown">
                             <Link
                               className="nav-link dropdown-toggle"
-                              to="#"
+                              to=""
                               id="navbarDropdown"
                               role="button"
-                              onClick={() => setSelectedSubLinks(node.subLinks)}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSelectedSubLinks(node.subLinks);
+                              }}
                               aria-expanded="false"
                             >
                               {node[`${locale_title_prefix}_title`]}
@@ -144,11 +169,15 @@ const Header = () => {
               </div>
             </div>
             <div
-              class="col-md-1 offset-md-1 container align-items-end d-flex flex-column"
+              class={` ${
+                scrolled ? "col" : "col-md-1 offset-md-1"
+              } container align-items-end d-flex flex-column`}
               id="desktop-navbar-lang-selector"
             >
               <div
-                class="d-flex col-md-5 offset-md-5 flex-grow-1 align-items-center justify-content-center"
+                class={`d-flex ${
+                  scrolled ? "col-md-12" : "col-md-5 offset-md-5"
+                } flex-grow-1 align-items-center justify-content-center`}
                 id="lang"
               >
                 <Link
@@ -161,7 +190,12 @@ const Header = () => {
                   {locale_title_prefix == "de" ? "EN" : "DE"}
                 </Link>
               </div>
-              <div class="container d-flex align-items-center" id="utility_lang_div"></div>
+              <div
+                class={`d-flex ${
+                  scrolled ? "col-md-12" : "col-md-5 offset-md-5"
+                } flex-grow-1 align-items-center justify-content-center`}
+                id="utility_lang_div"
+              ></div>
             </div>
           </div>
         </nav>

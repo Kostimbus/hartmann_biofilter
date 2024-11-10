@@ -1,0 +1,20 @@
+[
+    {
+        "de": [
+            {
+                "title": "CO2 Fußabdruck",
+                "img_path": "../images/wald.jpg"
+            }
+            
+        ]
+    },
+    {
+        "en": [
+            {
+                "title": "Carbon Footprint",
+                "img_path": "../images/wald.jpg"
+                
+            }
+        ]
+    }
+]
