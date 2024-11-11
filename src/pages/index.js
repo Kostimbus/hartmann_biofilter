@@ -4,6 +4,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { useIntl } from "gatsby-plugin-intl";
 import { FormattedMessage } from "react-intl";
+import { getImage } from "gatsby-plugin-image";
+import TextImage from "../components/mdx_sections/textImage.js";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -27,12 +29,37 @@ const IndexPage = () => {
           }
         }
       }
+      allMdx {
+        nodes {
+          body
+          frontmatter {
+            image {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 350
+                  formats: AUTO
+                  placeholder: BLURRED
+                )
+              }
+            }
+            lang
+            name
+          }
+        }
+      }
     }
   `);
 
   const filteredSubLinks = data.allLinksJson.edges
     .filter(({ node }) => node.slug === "/areas-of-application")
     .flatMap(({ node }) => node.subLinks || []);
+
+  const mdxData = data.allMdx.nodes.reduce((acc, node) => {
+    const { name } = node.frontmatter;
+    acc[name] = node;
+    return acc;
+  }, {});
 
   const imagePaths = [
     "../images/industrie.jpg",
@@ -48,8 +75,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <div class="herosection-wrapper">
-        <div class="over-herosection-claim-wrapper col-md-5">
-          <div class="d-flex claims align-items-center">
+        <div class="over-herosection-claim-wrapper col-md-5 d-flex align-items-center">
+          <div class="d-flex claims">
             <p class="col-md-12" id="main-claim">
               <FormattedMessage id="slogan" defaultMessage={"Innovative Lösungen"} />
             </p>
@@ -62,9 +89,8 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-
-      <div class="d-flex container-fluid branches" id="branches-container">
-        <div class="container-fluid justify-content-start">
+      <div class="d-flex container-fluid" id="branches-container">
+        <div class="container-fluid justify-content-start branches">
           <p class="content-title">
             <FormattedMessage id="teaser" defaultMessage={"Überall verwenden"} />
           </p>
@@ -116,6 +142,12 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
+      {console.log(mdxData.main_content)};
+      <TextImage
+        id="main_content"
+        text={mdxData.main_content.body}
+        image={getImage(mdxData.main_content.frontmatter.image)}
+      />
     </Layout>
   );
 };

@@ -100,10 +100,11 @@
 $custom-blue: #264683;
 $custom-grey: #EAEAEA;
 $navbar-font-size: 19px;
-//$main-claim-font-size: 68px;
-$main-claim-font-size: 3.4vw;
+$main-claim-font-size: 4.2rem;
+$sub-claim-font-size: 1.8rem;
+//$main-claim-font-size: 3.4vw;
 //$main-claim-font-size: clamp(15px, 3vw, 20px);
-$sub-claim-font-size: 1.4vw;
+//$sub-claim-font-size: 1.4vw;
 
 
 header {
@@ -409,10 +410,11 @@ header {
         position: relative;
         z-index: 10;
         margin-top: 76vh;
-        padding-left: 5%;
+        padding-left: 0.4rem;
         background-color: $custom-blue;
         height: 24vh;
-        padding: 1% 1%;
+        //padding-top: 2rem;
+        //padding: 1% 1%;
     
         &:before {
             position: absolute;
@@ -423,8 +425,8 @@ header {
             content: '';
             background: $custom-blue;
             pointer-events: none;
-            transform-origin: bottom right;
-            width: 13%;
+            transform-origin: bottom left;
+            width: 7.5rem;
             z-index: 0;
         }
     
@@ -458,9 +460,13 @@ header {
     margin-top: 84vh;
     z-index: 0;
     padding-left: 5.4rem;
-    height: 50rem;
+    height: 60rem;
     position: relative;
 
+    .branches {
+        padding-left: 0;
+        padding-right: 0;
+    }
     .content-title {
         font-family: ClashGrotesk;
         font-weight: 500;
