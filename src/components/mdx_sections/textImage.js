@@ -14,7 +14,7 @@ function compileMDX(mdx) {
   return code;
 }
 
-const TextImage = ({ id, text, image }) => {
+const TextImage = ({ id, text, image, title, order }) => {
   const [content, setContent] = useState();
 
   useEffect(() => {
@@ -26,13 +26,14 @@ const TextImage = ({ id, text, image }) => {
 
   return (
     <section id={id}>
-      <div class="container flex-row d-flex">
+      <div class="flex-row d-flex align-items-center">
         {image && (
-          <div class="col-md-4" data-aos="fade-up">
-            <GatsbyImage image={image} alt="Image" width={250} />
+          <div class="col-md-6 main-content-img" data-aos="fade-up">
+            <GatsbyImage image={image} alt="Image" />
           </div>
         )}
-        <div class="col-md-5" data-aos="fade-up">
+        <div class="col-md-6 main-content-text align-items-center" data-aos="fade-up">
+          <p class="main-content-title">{title && title}</p>
           {content && content}
         </div>
       </div>

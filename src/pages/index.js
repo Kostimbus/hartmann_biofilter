@@ -37,14 +37,19 @@ const IndexPage = () => {
               childImageSharp {
                 gatsbyImageData(
                   layout: CONSTRAINED
-                  width: 350
-                  formats: AUTO
-                  placeholder: BLURRED
+                  transformOptions: { fit: COVER, cropFocus: CENTER }
+                  height: 1000
+                  width: 2000
+                  aspectRatio: 2
+                  quality: 50
                 )
               }
             }
             lang
             name
+            title
+            order
+            lang
           }
         }
       }
@@ -142,12 +147,14 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      {console.log(mdxData.main_content)};
-      <TextImage
-        id="main_content"
-        text={mdxData.main_content.body}
-        image={getImage(mdxData.main_content.frontmatter.image)}
-      />
+      <div class="main-container">
+        <TextImage
+          id="main_content"
+          text={mdxData.main_content.body}
+          image={getImage(mdxData.main_content.frontmatter.image)}
+          title={mdxData.main_content.frontmatter.title}
+        />
+      </div>
     </Layout>
   );
 };
