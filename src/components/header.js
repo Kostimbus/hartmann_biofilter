@@ -71,14 +71,9 @@ const Header = () => {
                 </span>
               </a>
             </div>
-            <div
-              class={`collapse navbar-collapse ${
-                scrolled ? "col-md-7" : "col-md-6"
-              } d-flex flex-column`}
-              id="desktop-main-nav"
-            >
+            <div class="collapse navbar-collapse col-md-6 d-flex flex-column" id="desktop-main-nav">
               <div
-                class="flex-grow-1 d-flex align-items-center container-fluid"
+                class="flex-grow-1 d-flex align-items-center container-fluid col-md-12"
                 id="desktop-navbar-list"
               >
                 <ul class="navbar-nav mb-lg-0 d-flex justify-content-around w-100">
@@ -113,7 +108,7 @@ const Header = () => {
                   ))}
                 </ul>
               </div>
-              <div class="container-fluid d-flex" id="desktop-navbar-info">
+              <div class="container-fluid d-flex col-md-12" id="desktop-navbar-info">
                 <ul class="d-flex flex-row align-items-center justify-content-start w-100">
                   {selectedSubLinks.length > 0 ? (
                     <>
@@ -169,15 +164,11 @@ const Header = () => {
               </div>
             </div>
             <div
-              class={` ${
-                scrolled ? "col" : "col-md-1 offset-md-1"
-              } container align-items-end d-flex flex-column`}
+              class="col-md-1 offset-md-1 container align-items-end d-flex flex-column"
               id="desktop-navbar-lang-selector"
             >
               <div
-                class={`d-flex ${
-                  scrolled ? "col-md-12" : "col-md-5 offset-md-5"
-                } flex-grow-1 align-items-center justify-content-center`}
+                class="d-flex col-md-5 flex-grow-1 align-items-center justify-content-center"
                 id="lang"
               >
                 <Link
@@ -191,9 +182,7 @@ const Header = () => {
                 </Link>
               </div>
               <div
-                class={`d-flex ${
-                  scrolled ? "col-md-12" : "col-md-5 offset-md-5"
-                } flex-grow-1 align-items-center justify-content-center`}
+                class="d-flex col-md-5 flex-grow-1 align-items-center justify-content-center"
                 id="utility_lang_div"
               ></div>
             </div>
