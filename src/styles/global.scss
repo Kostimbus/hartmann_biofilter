@@ -556,18 +556,45 @@ header {
     font-family: Roboto;
     font-size: $main-content-font-size;
     font-weight: 300;
+
+    a, a:visited {
+        color:inherit;
+    }
+
     section > div {
         height: 35rem;
     }
-    .main-content-img {
-    padding-right: 1.5rem;
-        > div {
-            box-shadow: 7px 6px 10px rgba(0, 0, 0, 0.25);
+
+
+    .main-post {
+        .main-content-img {
+            padding-right: 1.5rem;
+
+            > div {
+                box-shadow: 7px 6px 10px rgba(0, 0, 0, 0.25);
+            }
+        }
+        
+        .main-content-text {
+            padding-left: 1.5rem;
+        }
+    }
+    
+    .reversed-main-post {
+        .main-content-img {
+            padding-left: 1.5rem;
+
+            > div {
+                box-shadow: -7px -6px 10px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .main-content-text {
+            padding-right: 1.5rem;
         }
     }
 
     .main-content-text {
-        padding-left: 1.5rem;
         p {
             max-width: 650px;
         }

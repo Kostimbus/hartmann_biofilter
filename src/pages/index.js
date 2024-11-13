@@ -12,15 +12,15 @@ import Seo from "../components/seo";
 import * as styles from "../components/index.module.css";
 
 const IndexPage = () => {
+  const intl = useIntl();
+  const locale = intl.locale !== "de" ? `/${intl.locale}` : "de";
+  const locale_title_prefix = locale.charAt(0) == "/" ? locale.slice(1) : locale;
+
   const data = useStaticQuery(graphql`
     {
-      allLinksJson {
+      allLinksJson(filter: { slug: { eq: "/areas-of-application" } }) {
         edges {
           node {
-            id
-            slug
-            en_title
-            de_title
             subLinks {
               slug
               de_title
@@ -36,10 +36,10 @@ const IndexPage = () => {
             image {
               childImageSharp {
                 gatsbyImageData(
-                  layout: CONSTRAINED
+                  layout: FULL_WIDTH
                   transformOptions: { fit: COVER, cropFocus: CENTER }
-                  height: 1000
-                  width: 2000
+                  height: 100
+                  width: 200
                   aspectRatio: 2
                   quality: 50
                 )
@@ -48,7 +48,7 @@ const IndexPage = () => {
             lang
             name
             title
-            order
+            reversed
             lang
           }
         }
@@ -56,11 +56,13 @@ const IndexPage = () => {
     }
   `);
 
-  const filteredSubLinks = data.allLinksJson.edges
-    .filter(({ node }) => node.slug === "/areas-of-application")
-    .flatMap(({ node }) => node.subLinks || []);
+  const filteredSubLinks = data.allLinksJson.edges[0].node.subLinks;
 
-  const mdxData = data.allMdx.nodes.reduce((acc, node) => {
+  const filteredMdxNodes = data.allMdx.nodes.filter(
+    (node) => node.frontmatter.lang === locale_title_prefix
+  );
+
+  const mdxData = filteredMdxNodes.reduce((acc, node) => {
     const { name } = node.frontmatter;
     acc[name] = node;
     return acc;
@@ -72,10 +74,6 @@ const IndexPage = () => {
     "../images/lebensmittelindustrie.jpg",
     "../images/recycling.jpg",
   ];
-
-  const intl = useIntl();
-  const locale = intl.locale !== "de" ? `/${intl.locale}` : "de";
-  const locale_title_prefix = locale.charAt(0) == "/" ? locale.slice(1) : locale;
 
   return (
     <Layout>
@@ -149,10 +147,32 @@ const IndexPage = () => {
       </div>
       <div class="main-container">
         <TextImage
-          id="main_content"
-          text={mdxData.main_content.body}
-          image={getImage(mdxData.main_content.frontmatter.image)}
-          title={mdxData.main_content.frontmatter.title}
+          id={mdxData.main_content_1.name}
+          text={mdxData.main_content_1.body}
+          image={getImage(mdxData.main_content_1.frontmatter.image)}
+          title={mdxData.main_content_1.frontmatter.title}
+          reversed={mdxData.main_content_1.frontmatter.reversed}
+        />
+        <TextImage
+          id={mdxData.main_content_2.name}
+          text={mdxData.main_content_2.body}
+          image={getImage(mdxData.main_content_2.frontmatter.image)}
+          title={mdxData.main_content_2.frontmatter.title}
+          reversed={mdxData.main_content_2.frontmatter.reversed}
+        />
+        <TextImage
+          id={mdxData.main_content_3.name}
+          text={mdxData.main_content_3.body}
+          image={getImage(mdxData.main_content_3.frontmatter.image)}
+          title={mdxData.main_content_3.frontmatter.title}
+          reversed={mdxData.main_content_3.frontmatter.reversed}
+        />
+        <TextImage
+          id={mdxData.main_content_4.name}
+          text={mdxData.main_content_4.body}
+          image={getImage(mdxData.main_content_4.frontmatter.image)}
+          title={mdxData.main_content_4.frontmatter.title}
+          reversed={mdxData.main_content_4.frontmatter.reversed}
         />
       </div>
     </Layout>

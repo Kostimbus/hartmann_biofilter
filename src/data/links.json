@@ -92,6 +92,11 @@
                 "de_title": "Downloads",
                 "en_title": "Downloads",
                 "slug": "/service/downloads"
+            },
+            {
+                "de_title": "Messen",
+                "en_title": "Fairs",
+                "slug": "/service/fairs"
             }
         ]
     },
