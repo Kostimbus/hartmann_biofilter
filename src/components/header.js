@@ -16,6 +16,11 @@ const Header = () => {
 
   const [selectedSubLinks, setSelectedSubLinks] = React.useState([]);
   const [scrolled, setScrolled] = React.useState(false);
+  const [isSubmenuOpen, setIsSubmenuOpen] = React.useState(false);
+
+  const toggleSubmenu = () => {
+    setIsSubmenuOpen(!isSubmenuOpen);
+  };
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +39,7 @@ const Header = () => {
 
   const data = useStaticQuery(graphql`
     {
-      allLinksJson {
+      allHeaderLinksJson {
         edges {
           node {
             id
@@ -57,7 +62,9 @@ const Header = () => {
       <header class="z-3 header sticky-top">
         <nav
           id="desktop-nav"
-          class={`navbar navbar-expand-lg navbar-light pt-3 ${scrolled ? "scrolled" : ""}`}
+          class={`d-none d-md-flex navbar navbar-expand-lg navbar-light pt-3 ${
+            scrolled ? "scrolled" : ""
+          }`}
         >
           <div class="container-fluid align-middle" id="kkk">
             <div class="navbar-logo col-md-3 d-flex flex-wrap align-items-center justify-content-center">
@@ -77,14 +84,16 @@ const Header = () => {
                 id="desktop-navbar-list"
               >
                 <ul class="navbar-nav mb-lg-0 d-flex justify-content-around w-100">
-                  {data.allLinksJson.edges.map(({ node }, index) => (
+                  {data.allHeaderLinksJson.edges.map(({ node }, index) => (
                     <>
                       <React.Fragment key={index}>
                         {node.subLinks ? (
                           <li class="nav-item dropdown">
                             <Link
                               className="nav-link dropdown-toggle"
-                              to=""
+                              activeClassName="active-link"
+                              partiallyActive={true}
+                              to={node.slug}
                               id="navbarDropdown"
                               role="button"
                               onClick={(e) => {
@@ -98,7 +107,7 @@ const Header = () => {
                           </li>
                         ) : (
                           <li class="nav-item">
-                            <Link className="nav-link" to={node.slug}>
+                            <Link className="nav-link" activeClassName="active-link" to={node.slug}>
                               {node[`${locale_title_prefix}_title`]}
                             </Link>
                           </li>
@@ -188,6 +197,35 @@ const Header = () => {
             </div>
           </div>
         </nav>
+        <nav id="mobile-nav" class="d-flex d-md-none justify-content-around">
+          <div class="tile">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </div>
+          <div class="tile">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </div>
+          <div class="tile">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </div>
+          <div class="tile">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </div>
+          <div class="tile" onClick={toggleSubmenu}>
+            <FontAwesomeIcon icon={faEnvelope} />
+          </div>
+        </nav>
+
+        {isSubmenuOpen && (
+          <div class="submenu-overlay">
+            <button class="close-btn" onClick={toggleSubmenu}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <div class="submenu-content">
+              <h2>SUKA</h2>
+              <p> PIDOR </p>
+            </div>
+          </div>
+        )}
       </header>
     </>
   );

@@ -17,25 +17,43 @@ const Footer = () => {
 
   const data = useStaticQuery(graphql`
     {
-      allLinksJson {
+      allFooterLinksJson {
         edges {
           node {
             id
             slug
             en_title
             de_title
-            subLinks {
-              slug
-              de_title
-              en_title
-            }
           }
         }
       }
     }
   `);
 
-  return <></>;
+  return (
+    <>
+      <footer class="footer">
+        <nav
+          id="desktop-nav-footer"
+          class="navbar navbar-expand-lg navbar-light justify-content-center align-items-center"
+        >
+          <div class="col-md-6 container-fluid d-flex flex-column align-middle align-items-center">
+            <ul class="navbar-nav mb-lg-0 d-flex justify-content-around w-100 align-items-center align-middle">
+              {data.allFooterLinksJson.edges.map(({ node }, index) => (
+                <>
+                  <li class="nav-item">
+                    <Link className="nav-link" to={node.slug}>
+                      {node[`${locale_title_prefix}_title`]}
+                    </Link>
+                  </li>
+                </>
+              ))}
+            </ul>
+          </div>
+        </nav>
+      </footer>
+    </>
+  );
 };
 
 export default Footer;

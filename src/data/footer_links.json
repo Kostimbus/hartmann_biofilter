@@ -1,0 +1,32 @@
+[
+    {
+        "de_title": "Startseite",
+        "en_title": "Homepage",
+        "slug": "/"
+    },
+    {
+        "de_title": "Kontakt",
+        "en_title": "Contact us",
+        "slug": "/contact"
+    },
+    {
+        "de_title": "Anfahrt",
+        "en_title": "Directions",
+        "slug": "/directions"
+    },
+    {
+        "de_title": "AGB",
+        "en_title": "Terms of Service",
+        "slug": "/terms-of-service"
+    },
+    {
+        "de_title": "Impressum",
+        "en_title": "Legal notice",
+        "slug": "/legal-notice"
+    },
+    {
+        "de_title": "Datenschutzerklärung",
+        "en_title": "Privacy policy",
+        "slug": "/privacy-policy"
+    }
+]

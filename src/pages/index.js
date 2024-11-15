@@ -18,7 +18,7 @@ const IndexPage = () => {
 
   const data = useStaticQuery(graphql`
     {
-      allLinksJson(filter: { slug: { eq: "/areas-of-application" } }) {
+      allHeaderLinksJson(filter: { slug: { eq: "/areas-of-application" } }) {
         edges {
           node {
             subLinks {
@@ -56,7 +56,7 @@ const IndexPage = () => {
     }
   `);
 
-  const filteredSubLinks = data.allLinksJson.edges[0].node.subLinks;
+  const filteredSubLinks = data.allHeaderLinksJson.edges[0].node.subLinks;
 
   const filteredMdxNodes = data.allMdx.nodes.filter(
     (node) => node.frontmatter.lang === locale_title_prefix
